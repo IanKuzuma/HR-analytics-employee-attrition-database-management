@@ -1,0 +1,92 @@
+===========================================
+PREFACE
+===========================================
+This script is part of the backend data preparation for our descriptive analytics project focused on 
+employee attrition and performance. The purpose of this SQL script is to define the structure of our 
+target PostgreSQL table and populate it with data from a CSV file extracted from Kaggle.
+
+The two main operations performed in this script are:
+1. **Data Definition** – Create a structured table with the appropriate column names, data types, 
+and constraints that mirror the dataset's schema.
+2. **Data Ingestion** – Load the cleaned CSV data directly into the newly created table using 
+PostgreSQL's high-performance `COPY` command.
+
+All table creation and data loading are handled inside PostgreSQL using SQL commands.
+
+---
+
+===========================================
+DATASET REFERENCE
+===========================================
+Dataset URL: https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset
+
+---
+
+===========================================
+STEP 1: DATA DEFINITION LANGUAGE (DDL)
+===========================================
+This command creates the `table_m3` table. Each column is mapped to its corresponding type based on the 
+dataset's characteristics (INT for numeric data, VARCHAR for categorical fields). The `SERIAL` 
+primary key column named `"ID"` is our unique identifier for each row.
+
+CREATE TABLE table_m3 (
+    "ID" SERIAL PRIMARY KEY,
+	"age" INT,
+	"attrition" VARCHAR(100),
+	"businessTravel" VARCHAR(100),
+	"dailyRate" INT,
+	"department" VARCHAR(100),
+	"distanceFromHome" INT,
+	"education" VARCHAR(100),
+	"educationField" VARCHAR(100),
+	"employeeCount" INT,
+	"environmentSatisfaction" VARCHAR(100),
+	"gender" VARCHAR(100),
+	"hourlyRate" INT,
+	"jobInvolvement" VARCHAR(100),
+	"jobLevel" INT,
+	"jobRole" VARCHAR(100),
+	"jobSatisfaction" VARCHAR(100),
+	"maritalStatus" VARCHAR(100),
+	"monthlyIncome" INT,
+	"monthlyRate" INT,
+	"numCompaniesWorked" INT,
+	"over18" VARCHAR(100),
+	"overTime" VARCHAR(100),
+	"percentSalaryHike" INT,
+	"performanceRating" VARCHAR(100),
+	"relationshipSatisfaction" VARCHAR(100),
+	"standardHours" INT,
+	"stockOptionLevel" INT,
+	"totalWorkingYears" INT,
+	"trainingTimesLastYear" INT,
+	"workLifeBalance" VARCHAR(100),
+	"yearsAtCompany" INT,
+	"yearsInCurrentRole" INT,
+	"yearsSinceLastPromotion" INT,
+	"yearsWithCurrManager" INT
+);
+
+===========================================
+STEP 2: DATA MANIPULATION LANGUAGE (DML)
+===========================================
+The `COPY` command is used to efficiently insert data into `table_m3`. The raw dataset has been 
+placed inside the `/data/` directory which is linked with the `/tmp/` directory within the container 
+or host volume, and follows the same column order and names defined above.
+
+COPY table_m3("ID", "age", "attrition", "businessTravel", "dailyRate", "department",
+       "distanceFromHome", "education", "educationField", "employeeCount",
+       "environmentSatisfaction", "gender", "hourlyRate", "jobInvolvement",
+       "jobLevel", "jobRole", "jobSatisfaction", "maritalStatus",
+       "monthlyIncome", "monthlyRate", "numCompaniesWorked", "over18",
+       "overTime", "percentSalaryHike", "performanceRating",
+       "relationshipSatisfaction", "standardHours", "stockOptionLevel",
+       "totalWorkingYears", "trainingTimesLastYear", "workLifeBalance",
+       "yearsAtCompany", "yearsInCurrentRole", "yearsSinceLastPromotion",
+       "yearsWithCurrManager")
+FROM '/tmp/HR_employee_attrition_dataset.csv'
+WITH (
+    FORMAT csv,
+    HEADER true,
+    DELIMITER ','
+);

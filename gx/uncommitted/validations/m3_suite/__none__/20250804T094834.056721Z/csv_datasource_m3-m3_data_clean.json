@@ -1,0 +1,233 @@
+{
+  "evaluation_parameters": {},
+  "meta": {
+    "active_batch_definition": {
+      "batch_identifiers": {},
+      "data_asset_name": "m3_data_clean",
+      "data_connector_name": "fluent",
+      "datasource_name": "csv_datasource_m3"
+    },
+    "batch_markers": {
+      "ge_load_time": "20250804T094834.064719Z",
+      "pandas_data_fingerprint": "31e63b619b4778a04727c33d1ae42ecb"
+    },
+    "batch_spec": {
+      "reader_method": "read_csv",
+      "reader_options": {
+        "filepath_or_buffer": "data\\P2M3_rd_ladityarsa_ilyankusuma_data_clean.csv"
+      }
+    },
+    "checkpoint_id": null,
+    "checkpoint_name": "checkpoint_m3",
+    "expectation_suite_name": "m3_suite",
+    "great_expectations_version": "0.18.19",
+    "run_id": {
+      "run_name": null,
+      "run_time": "2025-08-04T16:48:34.056721+07:00"
+    },
+    "validation_id": null,
+    "validation_time": "20250804T094834.083223Z"
+  },
+  "results": [
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_unique",
+        "kwargs": {
+          "batch_id": "csv_datasource_m3-m3_data_clean",
+          "column": "id"
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "element_count": 1470,
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "unexpected_percent_total": 0.0
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "csv_datasource_m3-m3_data_clean",
+          "column": "age",
+          "max_value": 60,
+          "min_value": 18
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "element_count": 1470,
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "unexpected_percent_total": 0.0
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "csv_datasource_m3-m3_data_clean",
+          "column": "education",
+          "value_set": [
+            "Below College",
+            "College",
+            "Bachelor",
+            "Master",
+            "Doctor"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "element_count": 1470,
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "unexpected_percent_total": 0.0
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_in_type_list",
+        "kwargs": {
+          "batch_id": "csv_datasource_m3-m3_data_clean",
+          "column": "daily_rate",
+          "type_list": [
+            "int64",
+            "float64"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "observed_value": "int64"
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_pair_values_a_to_be_greater_than_b",
+        "kwargs": {
+          "batch_id": "csv_datasource_m3-m3_data_clean",
+          "column_A": "monthly_rate",
+          "column_B": "daily_rate"
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "element_count": 1470,
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "unexpected_percent_total": 0.0
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_table_row_count_to_be_between",
+        "kwargs": {
+          "batch_id": "csv_datasource_m3-m3_data_clean",
+          "max_value": 2000,
+          "min_value": 1000
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "observed_value": 1470
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_median_to_be_between",
+        "kwargs": {
+          "batch_id": "csv_datasource_m3-m3_data_clean",
+          "column": "monthly_income",
+          "max_value": 6000,
+          "min_value": 4000
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "observed_value": 4919.0
+      },
+      "success": true
+    }
+  ],
+  "statistics": {
+    "evaluated_expectations": 7,
+    "success_percent": 100.0,
+    "successful_expectations": 7,
+    "unsuccessful_expectations": 0
+  },
+  "success": true
+}
